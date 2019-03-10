@@ -61,51 +61,17 @@ independent_var_columns = [
 dependent_var_columns = ['Primary status']
 
 
-def map_gender(gender):
-    if gender == 'Male':
-        return 0
-    else:
-        return 1
-
-
-def map_breed(breed):
-    if breed == 'LAB':
-        return 0
-    elif breed == 'GRT':
-        return 1
-    elif breed == 'BLB':
-        return 2
-    elif breed == 'GRT':
-        return 3
-    elif breed == 'LB*GRT':
-        return 4
-    elif breed == 'BLB*GRT':
-        return 5
-    return 6
-
-
-def map_status(status):
-    if status == 'guide':
-        return 0
-    elif status == 'breeding':
-        return 1
-    elif status == 'unsuitable':
-        return 2
-    elif status == 'training PTSD':
-        return 3
-    elif status == 'puppy':
-        return 4
-    return 5
-
-
 def read_data_set():
     df = pd.read_excel('dog.xlsx')
     # Map string values from data set to integer
-    df['gender'].map(map_gender)
-    df['breed'].map(map_breed)
-    df['Primary status'].map(map_status)
+    gender_map = {'Male': 1, 'Female': 2}
+    df['gender'] = df['gender'].map(gender_map)
+    breed_map = {'LAB': 1, 'BLB': 2, 'GRT': 3, 'LB*GRT': 4, 'BLB*GRT':5 , 'GSD':6}
+    df['breed'] = df['breed'].map(breed_map)
+    status_map = {'guide': 1, 'breeding': 2, 'unsuitable': 3, 'training PTSD': 4, 'puppy': 5, 'training': 6}
+    df['Primary status'] = df['Primary status'].map(status_map)
     # Replacing empty cells with 0
-    df.fillna(0)
+    df = df.fillna(0)
     return df
 
 
@@ -121,10 +87,9 @@ x = preprocessing.StandardScaler().fit(x).transform(x.astype(float))
 # Split data to train and test groups
 x_train, x_test, y_train, y_test = train_test_split(x, y)
 
-
 # Train Model and Predict
 for k in range(3, 7):
-    classifier = KNeighborsClassifier(n_neighbors = k).fit(x_train, y_train)
+    classifier = KNeighborsClassifier(n_neighbors=k).fit(x_train, y_train)
     yhat = classifier.predict(x_test)
     print("============================")
     print("Accuracy for k: ", k)
