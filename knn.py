@@ -84,15 +84,15 @@ y = data_set[dependent_var_columns].values
 # Convert values to float
 x = preprocessing.StandardScaler().fit(x).transform(x.astype(float))
 
-# Split data to train and test groups
+# Split data to train and test groups (test group size is 0.25)
 x_train, x_test, y_train, y_test = train_test_split(x, y)
 
-# Train Model and Predict
+# Train Model and Predict for different K
 for k in range(3, 7):
     classifier = KNeighborsClassifier(n_neighbors=k).fit(x_train, y_train)
-    yhat = classifier.predict(x_test)
+    y_result = classifier.predict(x_test)
     print("============================")
     print("Accuracy for k: ", k)
     print("Train set Accuracy: ", metrics.accuracy_score(y_train, classifier.predict(x_train)))
-    print("Test set Accuracy: ", metrics.accuracy_score(y_test, yhat))
+    print("Test set Accuracy: ", metrics.accuracy_score(y_test, y_result))
     print("============================\n")
