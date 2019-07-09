@@ -1,5 +1,10 @@
+"""
+This module contains function to read xmlx file with data about dogs.
+Also it contains arrays of independent variables
+"""
 import pandas as pd
 
+# Array of independent variables
 independent_var_columns = [
     'gender',
     'breed',
@@ -52,18 +57,24 @@ independent_var_columns = [
     '48. HOUSE BREAKING PROBLEMS'
 ]
 
+# Array of dependent variables
 dependent_var_columns = ['Primary status']
 
-target_classes = ['guide', 'unsuitable', 'breeding', 'training PTSD', 'puppy', 'training']
+# Possible states of dependent variable
+target_classes = ['guide', 'unsuitable', 'breeding', 'training PTSD',
+                  'puppy', 'training']
 
+# Function to read dataframe from xml file
 def read_data_set():
     df = pd.read_excel('dog.xlsx')
     # Map string values from data set to integer
     gender_map = {'Male': 1, 'Female': 2}
     df['gender'] = df['gender'].map(gender_map)
-    breed_map = {'LAB': 1, 'BLB': 2, 'GRT': 3, 'LB*GRT': 4, 'BLB*GRT':5 , 'GSD':6}
+    breed_map = {'LAB': 1, 'BLB': 2, 'GRT': 3, 'LB*GRT': 4,
+                 'BLB*GRT':5 , 'GSD':6}
     df['breed'] = df['breed'].map(breed_map)
-    status_map = {'guide': 1, 'unsuitable': 2, 'breeding': 3, 'training PTSD': 4, 'puppy': 5, 'training': 6}
+    status_map = {'guide': 1, 'unsuitable': 2, 'breeding': 3,
+                  'training PTSD': 4, 'puppy': 5, 'training': 6}
     df['Primary status'] = df['Primary status'].map(status_map)
     # Replacing empty cells with 0
     df = df.fillna(0)
