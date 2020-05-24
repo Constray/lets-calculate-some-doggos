@@ -9,11 +9,10 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn import metrics, preprocessing
 
 # indexed of classes to filter
-filtered_classes = [1, 2]
+filtered_classes = [1, 2, 3, 4, 5, 6]
 
 # Proportion of train/test data split
-test_split_sizes = [0.25, 0.30 ,0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65,
-                    0.7, 0.75]
+test_split_sizes = [0.20]
 
 # Read from data set
 data_set = dr.read_data_set()

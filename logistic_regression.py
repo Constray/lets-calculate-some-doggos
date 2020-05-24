@@ -9,11 +9,10 @@ from sklearn.linear_model import LogisticRegression
 from sklearn import metrics
 
 # indexed of classes to filter
-filtered_classes = [1, 2]
+filtered_classes = [1, 2, 3, 4, 5, 6]
 
 # Proportion of train/test data split
-test_split_sizes = [0.25, 0.30 ,0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65,
-                    0.7, 0.75]
+test_split_sizes = [0.20]
 
 # Read from data set
 data_set = dr.read_data_set()
@@ -22,6 +21,9 @@ data_set = data_set.loc[data_set['Primary status']
 
 split_train_accuracy = []
 split_test_accuracy = []
+
+x = data_set[dr.independent_var_columns].values
+y = data_set[dr.dependent_var_columns].values
 
 for split in test_split_sizes:
     # Split data to train and test groups (test group size is 0.25)

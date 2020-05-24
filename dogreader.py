@@ -66,7 +66,7 @@ target_classes = ['guide', 'unsuitable', 'breeding', 'training PTSD',
 
 # Function to read dataframe from xml file
 def read_data_set():
-    df = pd.read_excel('dog.xlsx')
+    df = pd.read_excel('dogs.xlsx')
     # Map string values from data set to integer
     gender_map = {'Male': 1, 'Female': 2}
     df['gender'] = df['gender'].map(gender_map)
