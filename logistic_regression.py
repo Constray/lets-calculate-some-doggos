@@ -1,5 +1,5 @@
 """
-This module contains code to experement on logistic regression algorhytm
+This module contains code to experiment on logistic regression algorithm
 """
 import numpy as np
 import dogreader as dr
@@ -9,7 +9,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn import metrics
 
 # indexed of classes to filter
-filtered_classes = [1, 2, 3, 4, 5, 6]
+# filtered_classes = [1, 2, 3, 4, 5, 6]
+filtered_classes = [1, 2]
 
 # Proportion of train/test data split
 test_split_sizes = [0.20]

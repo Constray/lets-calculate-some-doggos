@@ -1,5 +1,5 @@
 """
-This module contains code to experement on decision tree algorhytm
+This module contains code to experiment on decision tree algorithm
 """
 import numpy as np
 import dogreader as dr

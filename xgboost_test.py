@@ -1,5 +1,5 @@
 """
-This module contains code to experement on xgboost algorhytm
+This module contains code to experemint on xgboost algorhytm
 """
 import dogreader as dr
 from xgboost import XGBClassifier

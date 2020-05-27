@@ -1,5 +1,5 @@
 """
-This module contains code to experement on KNN algorhytm
+This module contains code to experiment on KNN algorithm
 """
 import numpy as np
 import dogreader as dr
