@@ -1,7 +1,6 @@
 import tensorflow as tf
 import numpy as np
 
-
 class SOM(object):
     def __init__(self, x, y, input_dim, learning_rate, radius, num_iter=111):
 
